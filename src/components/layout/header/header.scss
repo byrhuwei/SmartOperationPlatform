@@ -1,0 +1,26 @@
+.el-header {
+  padding: 0px;
+  color: #333;
+  text-align: center;
+  //   background-color: #EFF2F7;
+  line-height: 60px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+  margin-bottom: 10px;
+
+  .el-menu {
+    background-color: #EFF2F7;
+
+    .el-menu-item {
+      width: 200px;
+
+      &.is-active {
+        color: #3091F2;
+        border-bottom: 3px solid #409EFF;
+      }
+
+      &:focus {
+        background-color: #EFF2F7;
+      }
+    }
+  }
+}

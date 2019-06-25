@@ -1,0 +1,30 @@
+.zs-main {
+  background-color: #FCFCFC;
+
+  .el-aside {
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+
+    .el-menu {
+      background-color: #FCFCFC;
+    }
+  }
+
+  .el-main {
+    // background-color: #ffffff;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity .3s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  background-color: #EFF2F7;
+
+  #page-container {
+    width: calc(100%-220px);
+    width: -moz-calc(100%-220px);
+    width: -webkit-calc(100%-220px);
+    height: 100%;
+    // padding-top: 10px;
+
+    .el-main {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+      height: 600px;
+      color: #333;
+      text-align: center;
+      line-height: 160px;
+
+      .fade-enter-active,
+      .fade-leave-active {
+        transition: opacity .3s;
+      }
+
+      .fade-enter,
+      .fade-leave-to {
+        opacity: 0;
+      }
+    }
+  }
+}
