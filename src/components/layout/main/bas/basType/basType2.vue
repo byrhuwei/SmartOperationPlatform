@@ -65,7 +65,7 @@
 		},
 		methods: {
 			drawDataTable1() {
-				let myChart = echarts.init(document.getElementById('main'));
+				let myChart = echarts.init(document.getElementById('main'),'purple-passion');
 				myChart.setOption({
 					title: {
 						text: '端到端时延日指标',

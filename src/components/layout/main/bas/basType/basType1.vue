@@ -29,7 +29,7 @@
 		},
 		methods: {
 			drawDataTable1() {
-				let myChart = echarts.init(document.getElementById('main'));
+				let myChart = echarts.init(document.getElementById('main'),'purple-passion');
 				myChart.setOption({
 					title: { //标题组件
 						text: '端到端时延和话单量',
@@ -50,6 +50,7 @@
 						left: 'right',
 						data: ['端到端处理时长(秒)', '基准线(秒)', '话单量（亿条）'],
 						textStyle: {
+							color: '#00B2EE',
 							fontSize: 10
 						}
 					},
@@ -163,7 +164,11 @@
 								normal: {
 									label: {
 										//show : false
-									}
+									},
+									lineStyle: {
+										color: 'orange'
+									},
+									barBorderColor: 'orange',
 								}
 							},
 							markLine: {
