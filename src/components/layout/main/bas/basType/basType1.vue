@@ -1,5 +1,5 @@
 <template>
-	<div id="main" style="float: left; width: 50%; height: 46%; padding-left: 10px;">内容计费一</div>
+	<div id="main" style="width: 100%; height: 100%;" class='dashboard'>内容计费一</div>
 </template>
 
 <script>
@@ -33,6 +33,7 @@
 				myChart.setOption({
 					title: { //标题组件
 						text: '端到端时延和话单量',
+						'subtext': '数据来自NRJF系统',
 						x: 'left',
 						y: 'top',
 						textAlign: 'left',
@@ -191,10 +192,22 @@
 			},			
 			getDurationList() {			    
 			axios.get('./gprs/duration/average/hour/2019-03-18').then(res => {  // 调用接口
-                
+                console.log("qqqqqqqq");
             });
 		}
 		
 		}
 	}
 </script>
+
+<style lang="stylus" scoped>
+.dashboard
+    position relative
+    width 100%
+    height 100%
+    margin:0px;
+    padding:0px;
+    padding-top 5%
+    background url('../../../../../assets/bg.jpg');
+    background-size 100% 100%;		
+</style>

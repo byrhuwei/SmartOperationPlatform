@@ -11,6 +11,9 @@ import  echarts from 'echarts'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(echarts)
+Vue.use(axios)
+
+axios.defaults.baseURL = 'http://192.168.127.41:8089'
 
 /* eslint-disable no-new */
 new Vue({
