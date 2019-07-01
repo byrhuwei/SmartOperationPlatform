@@ -7,21 +7,22 @@
 	var axios = require('axios');
 	export default {
 		name: "basType1",
-		data(){
-            return{
-                durationList: [321, 234, 234, 124, 276, 267, 287, 278, 144, 322, 133, 164, 166, 141, 321, 234, 234, 124,
-					0, 0, 0, 0, 0, 0], //端到端时延数据列表 
-                cdrAmountList: [], //话单量数据列表 
-            }
-        },
-        created(){
-            var that = this;
-            // 先获取接口的价格数据
-            that.getDurationList();
-            window.setInterval(() => {  //每小时请求一次接口
-                  setTimeout(that.getDurationList, 0)
-            }, 360000)
-        },
+		data() {
+			return {
+				durationList: [321, 234, 234, 124, 276, 267, 287, 278, 144, 322, 133, 164, 166, 141, 321, 234, 234, 124,
+					0, 0, 0, 0, 0, 0
+				], //端到端时延数据列表 
+				cdrAmountList: [], //话单量数据列表 
+			}
+		},
+		created() {
+			var that = this;
+			// 先获取接口的价格数据
+			that.getDurationList();
+			window.setInterval(() => { //每小时请求一次接口
+				setTimeout(that.getDurationList, 0)
+			}, 360000)
+		},
 		//挂载前初始化echarts实例
 		mounted() {
 			// 绘制图表
@@ -29,7 +30,7 @@
 		},
 		methods: {
 			drawDataTable1() {
-				let myChart = echarts.init(document.getElementById('main'),'purple-passion');
+				let myChart = echarts.init(document.getElementById('main'), 'purple-passion');
 				myChart.setOption({
 					title: { //标题组件
 						text: '端到端时延和话单量',
@@ -194,25 +195,25 @@
 					]
 				});
 
-			},			
-			getDurationList() {			    
-			axios.get('./gprs/duration/average/hour/2019-03-18').then(res => {  // 调用接口
-                console.log("qqqqqqqq");
-            });
-		}
-		
+			},
+			getDurationList() {
+				axios.get('./gprs/duration/average/hour/2019-03-18').then(res => { // 调用接口
+					console.log("qqqqqqqq");
+				});
+			}
+
 		}
 	}
 </script>
 
 <style lang="stylus" scoped>
-.dashboard
-    position relative
-    width 100%
-    height 100%
-    margin:0px;
-    padding:0px;
-    padding-top 5%
-    background url('../../../../../assets/bg.jpg');
-    background-size 100% 100%;		
+.dashboard 
+	position:relative;
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+	background url('../../../../../assets/bg.jpg');
+	background-size:100%,100%;
+	//background:rgba(0 0 0 0.1);
 </style>

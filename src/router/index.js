@@ -16,6 +16,7 @@ import basIndex from '@/components/layout/main/bas/basIndex/basIndex'
 import basType1 from '@/components/layout/main/bas/basType/basType1'
 import basType2 from '@/components/layout/main/bas/basType/basType2'
 import basType3 from '@/components/layout/main/bas/basType/basType3'
+import dashboard from '@/components/layout/main/bas/basType/dashboard'
 
 Vue.use(Router)
 
@@ -50,7 +51,8 @@ export default new Router({
           { path: '', redirect: 'basType1' },
           { path: 'basType1', name: 'basType1', component: basType1 },
           { path: 'basType2', name: 'basType2', component: basType2 },
-          { path: 'basType3', name: 'basType3', component: basType3 }
+          { path: 'basType3', name: 'basType3', component: basType3 },
+					{ path: 'dashboard', name: 'dashboard', component: dashboard }
         ]
       }
     ]

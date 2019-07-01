@@ -1,20 +1,24 @@
 body {
   margin: 0;
-  background-color: #EFF2F7;
+  //background-color: #EFF2F7;
+	background:url('../../assets/bg.jpg');
 
   #page-container {
-    width: calc(100%-220px);
-    width: -moz-calc(100%-220px);
-    width: -webkit-calc(100%-220px);
+    //width: calc(100%-220px);
+    //width: -moz-calc(100%-220px);
+    //width: -webkit-calc(100%-220px);
+		width: 100%;
     height: 100%;
     // padding-top: 10px;
 
     .el-main {
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
-      height: 600px;
+      height: 650px;
       color: #333;
       text-align: center;
       line-height: 160px;
+			//opacity: 0;
+			padding: 0%;
 
       .fade-enter-active,
       .fade-leave-active {
