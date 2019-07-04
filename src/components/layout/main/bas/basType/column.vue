@@ -1,4 +1,4 @@
-<!-- 柱状图 -->
+<!-- 话单量图 -->
 <style lang="stylus" scoped>
 .columnChart
   height 800px
@@ -31,7 +31,7 @@ export default {
       legendArr: [],
       color: this.$store.state.color,
       myChart: {},
-      name: '柱状图'
+      name: '话单量指标'
     }
   },
   methods: {
