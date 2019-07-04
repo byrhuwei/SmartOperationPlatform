@@ -18,6 +18,11 @@ import basType2 from '@/components/layout/main/bas/basType/basType2'
 import basType3 from '@/components/layout/main/bas/basType/basType3'
 import dashboard from '@/components/layout/main/bas/basType/dashboard'
 
+import column from '@/components/layout/main/bas/basType/column'
+import point from '@/components/layout/main/bas/basType/point'
+import line from '@/components/layout/main/bas/basType/line'
+import multipleColumn from '@/components/layout/main/bas/basType/multipleColumn'
+
 Vue.use(Router)
 
 export default new Router({
@@ -57,6 +62,24 @@ export default new Router({
       }
     ]
   },
+	{
+	  path: '/column',
+	  component: column
+	},
+	{
+	  path: '/point',
+	  component: point
+	}, {
+	  path: '/dashboard',
+	  component: dashboard
+	}, {
+	  path: '/multipleColumn',
+	  component: multipleColumn
+	}, {
+	  path: '/line',
+	  component: line
+	}
   ],
+	linkActiveClass: 'active',
   mode: 'history'
 })

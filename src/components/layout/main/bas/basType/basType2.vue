@@ -170,6 +170,6 @@
 	height:100%;
 	margin:0px;
 	padding:0px;
-	background url('../../../../../assets/bg.jpg');
+	//background url('../../../../../assets/bg.jpg');
 	background-size 100% 100%;
 </style>

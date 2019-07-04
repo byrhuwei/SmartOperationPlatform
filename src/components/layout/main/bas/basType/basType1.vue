@@ -213,7 +213,7 @@
 	height:100%;
 	margin:0px;
 	padding:0px;
-	background url('../../../../../assets/bg.jpg');
+	//background url('../../../../../assets/bg.jpg');
 	background-size:100%,100%;
 	//background:rgba(0 0 0 0.1);
 </style>
