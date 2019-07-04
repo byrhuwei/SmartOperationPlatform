@@ -35,7 +35,7 @@ export default {
     }
   },
   methods: {
-    _init() {
+    init() {
       this.legendArr = this.myChart.getOption().series
       this.legendArr.forEach((data) => {
         data.selected = true;
@@ -152,7 +152,7 @@ export default {
         barGap: 0
       }]
     });
-    this._init()
+    this.init()
   }
 }
 

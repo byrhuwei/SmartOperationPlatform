@@ -180,7 +180,7 @@ export default {
       this.redraw()
     },
     redraw() {
-      let option = this._deepCopy(this.resetOption)
+      let option = this.deepCopy(this.resetOption)
       let count = 0
       this.pro_list.forEach((pro, index) => {
         index = index - count

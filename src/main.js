@@ -9,6 +9,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import  echarts from 'echarts'
 import  '../static/js/purple-passion.js'
 import Vuex from 'vuex'
+import {DatePicker} from 'element-ui'
+
+Vue.component(DatePicker.name, DatePicker)
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
@@ -17,7 +20,7 @@ Vue.use(axios)
 Vue.use(Vuex)
 
 //axios.defaults.baseURL = 'http://192.168.127.41:8089'
-axios.defaults.baseURL = 'http://localhost:8082'
+axios.defaults.baseURL = 'http://localhost:8081'
 
 const store = new Vuex.Store({
   state: {
@@ -34,5 +37,9 @@ new Vue({
   components: {
     App
   },
+	data: {
+	  eventHub: new Vue(),
+	  charts: []
+	},
   template: '<App/>'
 })
