@@ -14,7 +14,6 @@
 <template>
 <div class="columnChart">
   <v-header :name="name" :legendArr="legendArr" :myChart="myChart"></v-header>
-  <v-filter :myChart="myChart" v-if="myChart._dom"></v-filter>
   <div class="main"></div>
 </div>
 
@@ -24,6 +23,7 @@
 import echarts from 'echarts'
 import header from './header.vue'
 import filter from './filter.vue'
+import axios from 'axios'
 
 export default {
   data() {
@@ -32,12 +32,21 @@ export default {
       color: this.$store.state.color,
       myChart: {},
       name: '实时指标',
-			durationList: [321, 234, 234, 124, 276, 267, 287, 278, 144, 322, 133, 164, 166, 141, 321, 234, 234, 124,
+	  durationList: [321, 234, 234, 124, 276, 267, 287, 278, 144, 322, 133, 164, 166, 141, 321, 234, 234, 124,
 				231, 321,323,222,312, 288], //端到端时延数据列表 
-			cdrAmountList: [32, 23, 23, 12, 27, 26, 27, 28, 14, 32, 13, 14, 16, 11, 21, 34, 34, 24,
+	  cdrAmountList: [32, 23, 23, 12, 27, 26, 27, 28, 14, 32, 13, 14, 16, 11, 21, 34, 34, 24,
 				21, 21,23,22,12, 18], //话单量数据列表 
     }
   },
+  watch: {
+	durationList(){
+		this.drawEchart();
+	},
+	cdrAmountList(){
+		this.drawEchart();
+	}
+  },
+
   methods: {
     init() {
       this.legendArr = this.myChart.getOption().series
@@ -48,14 +57,29 @@ export default {
       window.addEventListener('resize', function() {
         this.myChart.resize()
       }.bind(this))
-    }
-  },
-  components: {
-    'v-header': header
-  },
-  mounted() {
-    // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(document.querySelector('.columnChart .main'));
+	},
+    getDurationData() {
+		var that = this;
+        axios.get('gprs/duration/average/hour/2019-03-18').then((res) => {
+		  debugger
+        that.durationList = res.data.data
+      })
+	},
+	getBusiAmountData() {
+		var that = this;
+        axios.get('gprs/busi/amount/2019-03-18').then((res) => {
+		  debugger
+		var data = res.data.data;
+		var array = [];
+		data.forEach(function(v) {
+			array.push(v / 100000000)
+		});  
+        that.cdrAmountList = array
+      })
+	},
+    drawEchart(){
+		 // 基于准备好的dom，初始化echarts实例
+	this.myChart = echarts.init(document.querySelector('.columnChart .main'));
     this.myChart.setOption({
 					title: { //标题组件
 						show:false
@@ -108,6 +132,9 @@ export default {
 						]
 					},
 					yAxis: [{ 
+						min: 0,
+						max: 600,
+						interval: 150,
 						axisLine: {
 						  show: false
 						},
@@ -129,6 +156,9 @@ export default {
 						  color: 'rgba(255, 255, 255, 0.69)'
 						}
 					}, { 
+						min: 0,
+						max: 20,
+						interval: 5,
 						axisLine: {
 						  show: false
 						},
@@ -222,7 +252,17 @@ export default {
 						}
 					]
     });
-    this.init()
+	}
+  },
+  components: {
+    'v-header': header
+  },
+  mounted() {
+    this.drawEchart();
+	this.init();
+	debugger
+	this.getDurationData();
+	this.getBusiAmountData();
   }
 }
 
