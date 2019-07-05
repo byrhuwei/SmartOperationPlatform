@@ -20,7 +20,7 @@ Vue.use(axios)
 Vue.use(Vuex)
 
 //axios.defaults.baseURL = 'http://192.168.127.41:8089'
-axios.defaults.baseURL = 'http://localhost:8081'
+axios.defaults.baseURL = 'http://localhost:8080'
 
 const store = new Vuex.Store({
   state: {

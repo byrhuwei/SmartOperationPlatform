@@ -7,8 +7,8 @@
   color white
   .main
     width 100%
-    height calc(100% - 100px)
-    margin-top -15px
+    height calc(100% - 40px)
+    margin-top 10px
 </style>
 
 <template>
@@ -31,7 +31,11 @@ export default {
       legendArr: [],
       color: this.$store.state.color,
       myChart: {},
-      name: '话单量指标'
+      name: '实时指标',
+			durationList: [321, 234, 234, 124, 276, 267, 287, 278, 144, 322, 133, 164, 166, 141, 321, 234, 234, 124,
+				231, 321,323,222,312, 288], //端到端时延数据列表 
+			cdrAmountList: [32, 23, 23, 12, 27, 26, 27, 28, 14, 32, 13, 14, 16, 11, 21, 34, 34, 24,
+				21, 21,23,22,12, 18], //话单量数据列表 
     }
   },
   methods: {
@@ -47,110 +51,176 @@ export default {
     }
   },
   components: {
-    'v-header': header,
-    'v-filter': filter
+    'v-header': header
   },
   mounted() {
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(document.querySelector('.columnChart .main'));
     this.myChart.setOption({
-      title: {
-        show: false
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {
-        show: false
-      },
-      toolbox: {
-        show: false
-      },
-      color: this.color,
-      calculable: true,
-      xAxis: [{
-        name: '产品',
-        type: 'category',
-        axisLine: {
-          show: false
-        },
-        axisTick: {
-          show: false
-        },
-        nameTextStyle: {
-          color: 'rgba(255, 255, 255, 0.69)'
-        },
-        axisLabel: {
-          textStyle: {
-            color: 'white'
-          }
-        },
-        data: ['产品1', '产品2']
-      }],
-      yAxis: [{
-        axisLine: {
-          show: false
-        },
-        nameLocation: 'end',
-        nameGap: 20,
-        nameRotate: 0,
-        axisTick: {
-          show: false
-        },
-        splitLine: {
-          lineStyle: {
-            color: ['rgba(230, 230, 230, 0.2)']
-          }
-        },
-        axisLabel: {
-          textStyle: {
-            color: 'white',
-            fontSize: 14
-          }
-        },
-        name: '数量',
-        type: 'value',
-        nameTextStyle: {
-          color: 'rgba(255, 255, 255, 0.69)'
-        }
-      }],
-      series: [{
-        name: '标签1',
-        type: 'bar',
-        data: [2.0, 4.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签2',
-        type: 'bar',
-        data: [2.6, 5.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签3',
-        type: 'bar',
-        data: [2.0, 6.4],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签4',
-        type: 'bar',
-        data: [4.0, 5.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签5',
-        type: 'bar',
-        data: [5.6, 4.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签6',
-        type: 'bar',
-        data: [2.0, 3.4],
-        barWidth: 16,
-        barGap: 0
-      }]
+					title: { //标题组件
+						show:false
+					},
+					tooltip: { //提示框组件
+						trigger: 'axis',
+						showDelay: 5
+					},
+					color: this.color,
+					toolbox: {
+						show: true,
+						orient: 'vertical',
+						x: 'right',
+						y: 'center',
+						feature: {
+							mark: {
+								show: true
+							},
+							restore: {
+								show: true
+							},
+							saveAsImage: {
+								show: true
+							}
+						}
+					},
+					xAxis: { //直角坐标系 grid 中的 x 轴				
+						type: 'category',
+						axisTick: {
+						  show: false
+						},
+						nameTextStyle: {
+						  color: 'rgba(255, 255, 255, 0.69)'
+						},
+						axisLabel: {
+						  textStyle: {
+						    color: 'white'
+						  },
+							show: true,
+							interval: 0,
+							formatter: '{value}:00',
+							rotate: 40
+						},
+						axisLine: {
+							show:false
+						},
+						data: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+							'10', '11', '12', '13', '14', '15', '16', '17', '18',
+							'19', '20', '21', '22', '23'
+						]
+					},
+					yAxis: [{ 
+						axisLine: {
+						  show: false
+						},
+						nameLocation: 'end',
+						nameGap: 20,
+						nameRotate: 0,
+						axisTick: {
+						  show: false
+						},
+						axisLabel: {
+						  textStyle: {
+						    color: 'white',
+						    fontSize: 14
+						  }
+						},
+						name: '秒',
+						type: 'value',
+						nameTextStyle: {
+						  color: 'rgba(255, 255, 255, 0.69)'
+						}
+					}, { 
+						axisLine: {
+						  show: false
+						},
+						nameLocation: 'end',
+						nameGap: 20,
+						nameRotate: 0,
+						axisTick: {
+						  show: false
+						},
+						axisLabel: {
+						  textStyle: {
+						    color: 'white',
+						    fontSize: 14
+						  }
+						},
+						name: '亿',
+						type: 'value',
+						nameTextStyle: {
+						  color: 'rgba(255, 255, 255, 0.69)'
+						}
+					}],
+					series: [ //系列列表
+						{
+							name: '端到端处理时长(秒)',
+							type: 'line',
+							markLine: {
+								symbol: ['arrow', 'none'],
+								symbolSize: [4, 2],
+								itemStyle: {
+									normal: {
+										lineStyle: {
+											color: 'orange'
+										},
+										barBorderColor: 'orange',
+										label: {
+											position: 'left',
+											formatter: function(
+												params) {
+												return Math
+													.round(params.value);
+											},
+											textStyle: {
+												color: 'orange'
+											}
+										}
+									}
+								},
+								'data': [{
+									'type': 'average',
+									'name': '平均值'
+								}]
+							},
+							itemStyle: {
+								normal: {
+									label: {
+										show: true
+									}
+								}
+							},
+							data: this.durationList,
+						}, {
+							name: '基准线(秒)',
+							type: 'line',
+							itemStyle: {
+								normal: {
+									lineStyle: {
+										color: 'orange'
+									},
+									barBorderColor: 'orange',
+								}
+							},
+							markLine: {
+								silent: true,
+								data: [{
+									yAxis: 360
+								}]
+							},
+						}, {
+							name: '话单量（亿条）',
+							type: 'bar',
+							//barWidth : 30,//柱图宽度
+							'yAxisIndex': 1,
+							itemStyle: {
+								normal: {
+									label: {
+										//show : true
+									}
+								}
+							},
+							data: this.cdrAmountList
+						}
+					]
     });
     this.init()
   }

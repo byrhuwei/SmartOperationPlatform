@@ -100,7 +100,7 @@
           全选
         </div>
         <div class="pro" @click="showProPane()">
-          产品<i class="arrow"></i>
+          类别<i class="arrow"></i>
         </div>
       </div>
       <div class="pro_list" v-show="pro_filter_flag">

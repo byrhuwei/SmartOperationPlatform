@@ -1,4 +1,4 @@
-<!-- 散点图 -->
+<!-- 省级情况图 -->
 <style lang="stylus" scoped>
 .point
   background url('../../../../../assets/bg.jpg') no-repeat
@@ -39,7 +39,7 @@ export default {
       color: this.$store.state.color,
       myChart: {},
       geoCoordMap: {},
-      name: '散点图'
+      name: '统一视图'
     }
   },
   methods: {
