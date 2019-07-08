@@ -1,34 +1,106 @@
 [{
-  "name": "海门",
-  "value": 9
-}, {
-  "name": "鄂尔多斯",
-  "value": 12
-}, {
-  "name": "南京",
-  "value": 67
-}, {
-  "name": "南充",
-  "value": 200
+  "name": "北京",
+  "value": 290
 }, {
   "name": "天津",
-  "value": 105
-}, {
-  "name": "富阳",
-  "value": 106
-}, {
-  "name": "泰安",
-  "value": 112
-}, {
-  "name": "诸暨",
-  "value": 112
-}, {
-  "name": "郑州",
-  "value": 113
-}, {
-  "name": "哈尔滨",
-  "value": 200
+  "value": 288
 }, {
   "name": "上海",
-  "value": 25
+  "value": 280
+}, {
+  "name": "重庆",
+  "value": 506
+}, {
+  "name": "河北",
+  "value": 285
+}, {
+  "name": "河南",
+  "value": 288
+}, {
+  "name": "云南",
+  "value": 280
+}, {
+  "name": "辽宁",
+  "value": 506
+}, {
+  "name": "黑龙江",
+  "value": 285
+}, {
+  "name": "湖南",
+  "value": 288
+}, {
+  "name": "安徽",
+  "value": 280
+}, {
+  "name": "山东",
+  "value": 506
+}, {
+  "name": "新疆",
+  "value": 285
+}, {
+  "name": "江苏",
+  "value": 288
+}, {
+  "name": "浙江",
+  "value": 280
+}, {
+  "name": "浙江",
+  "value": 506
+}, {
+  "name": "江西",
+  "value": 285
+}, {
+  "name": "湖北",
+  "value": 288
+}, {
+  "name": "广西",
+  "value": 280
+}, {
+  "name": "甘肃",
+  "value": 506
+}, {
+  "name": "山西",
+  "value": 285
+}, {
+  "name": "陕西",
+  "value": 288
+}, {
+  "name": "内蒙古",
+  "value": 280
+}, {
+  "name": "吉林",
+  "value": 506
+}, {
+  "name": "福建",
+  "value": 285
+}, {
+  "name": "贵州",
+  "value": 288
+}, {
+  "name": "广东",
+  "value": 280
+}, {
+  "name": "青海",
+  "value": 406
+}, {
+  "name": "西藏",
+  "value": 285
+}, {
+  "name": "四川",
+  "value": 288
+}, {
+  "name": "宁夏",
+  "value": 280
+}, {
+  "name": "海南",
+  "value": 406
+}, {
+  "name": "台湾",
+  "value": 285
+}, {
+  "name": "香港",
+  "value": 506
+}, {
+  "name": "澳门",
+  "value": 285
 }]

@@ -31,7 +31,8 @@ const AUTH_TOKEN = "Basic " + btoa(USER_NAME + ":" + PSW)
 
 export default {
   created() {
-    this.getCityData()
+    //this.getCityData()
+    this.getMyChart()
   },
   data() {
     return {
@@ -84,7 +85,7 @@ export default {
     getMyChart() {
       axios.get('static/data/point/testData.json').then((res) => {
         let options = {
-          // backgroundColor: '#404a59',
+          //backgroundColor: '#404a59',
           title: {
             show: false
           },
@@ -99,15 +100,14 @@ export default {
           },
           visualMap: {
             min: 0,
-            max: 200,
-            bottom: 50,
-            splitNumber: 5,
-            inRange: {
-              color: ['#255B78', '#2A7484', '#2F9696', '#3BBCB0', '#51D4EB']
-            },
-            textStyle: {
-              color: '#fff'
-            }
+            max: 1050,
+            type: 'piecewise',
+            pieces: [
+              {min: 500, max: 1500},
+              {min: 360, max: 500},
+              {min: 0, max: 360},
+            ],
+            color: ['#E0022B', '#E09107', '#CDD8FD']
           },
           geo: {
             map: 'china',
@@ -130,12 +130,9 @@ export default {
             }
           },
           series: [{
-            name: '标签1',
-            type: 'scatter',
-            coordinateSystem: 'geo',
-            symbolSize: function(val) {
-              return val[2] / 6;
-            },
+            name: '时延',
+            type: 'map',
+            mapType: 'china',
             label: {
               normal: {
                 show: false
@@ -150,51 +147,8 @@ export default {
                 borderWidth: 1
               }
             },
-            data: this.convertData(res.data)
-          }, {
-            name: '标签2',
-            type: 'scatter',
-            coordinateSystem: 'geo',
-            symbolSize: function(val) {
-              return val[2] / 6;
-            },
-            label: {
-              normal: {
-                show: false
-              },
-              emphasis: {
-                show: false
-              }
-            },
-            itemStyle: {
-              emphasis: {
-                borderColor: '#fff',
-                borderWidth: 1
-              }
-            },
-            data: this.convertData(res.data)
-          }, {
-            name: '标签3',
-            type: 'scatter',
-            coordinateSystem: 'geo',
-            symbolSize: function(val) {
-              return val[2] / 6;
-            },
-            label: {
-              normal: {
-                show: false
-              },
-              emphasis: {
-                show: false
-              }
-            },
-            itemStyle: {
-              emphasis: {
-                borderColor: '#fff',
-                borderWidth: 1
-              }
-            },
-            data: this.convertData(res.data)
+            showLegendSymbol: false,
+            data: res.data
           }]
         }
         this.init(options)
