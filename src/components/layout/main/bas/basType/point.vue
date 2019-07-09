@@ -4,7 +4,7 @@
   background url('../../../../../assets/bg.jpg') no-repeat
   background-size 100% 100%
   .main
-    height calc(100% - 120px)
+    height calc(100% - 70px)
     width 100%
     transition all 0.5s linear
 </style>
@@ -12,7 +12,6 @@
 <template lang="html">
 <div class="point">
   <v-header :name="name" :legendArr="legendArr" :myChart="myChart"></v-header>
-  <v-filter :myChart="myChart" v-if="myChart._dom"></v-filter>
   <div class="main"></div>
 </div>
 </template>
@@ -31,7 +30,6 @@ const AUTH_TOKEN = "Basic " + btoa(USER_NAME + ":" + PSW)
 
 export default {
   created() {
-    //this.getCityData()
     this.getMyChart()
   },
   data() {
@@ -39,7 +37,6 @@ export default {
       legendArr: [],
       color: this.$store.state.color,
       myChart: {},
-      geoCoordMap: {},
       name: '统一视图'
     }
   },
@@ -56,43 +53,16 @@ export default {
         this.myChart.resize()
       }.bind(this))
     },
-    getCityData() {
-      axios.get('static/data/cityData.json').then((res) => {
-        this.geoCoordMap = res.data
-        this.$nextTick(() => {
-          this.getMyChart()
-        })
-      })
-    },
-    convertData(data) {
-      let res = [];
-      for (let i = 0; i < 4; i++) {
-        let l = data.length
-        let x = parseInt(Math.random() * l)
-        let geoCoord = this.geoCoordMap[data[x].name]
-          // let geoCoord = this.geoCoordMap[data[i].name];
-        if (geoCoord) {
-          res.push({
-            name: data[x].name,
-            // name: data[x].name,
-            value: geoCoord.concat(Math.random() * 200)
-              // value: geoCoord.concat(data[i].value)
-          });
-        }
-      }
-      return res;
-    },
     getMyChart() {
       axios.get('static/data/point/testData.json').then((res) => {
         let options = {
-          //backgroundColor: '#404a59',
           title: {
             show: false
           },
           tooltip: {
             trigger: 'item',
             formatter: function(params) {
-              return params.name + ' : ' + params.value[2];
+              return params.name + ' : ' + params.value +  's';
             }
           },
           legend: {
@@ -109,36 +79,17 @@ export default {
             ],
             color: ['#E0022B', '#E09107', '#CDD8FD']
           },
-          geo: {
-            map: 'china',
-            label: {
-              emphasis: {
-                show: false
-              }
-            },
-            zoom: 1,
-            top: 50,
-            itemStyle: {
-              normal: {
-                color: '#3c4247',
-                opacity: 0.6,
-                borderColor: 'rgba(255, 255, 255, 0.35)'
-              },
-              emphasis: {
-                color: '#2a333d'
-              }
-            }
-          },
           series: [{
             name: '时延',
             type: 'map',
             mapType: 'china',
+            roam:true,
             label: {
               normal: {
                 show: false
               },
               emphasis: {
-                show: false
+                show: true
               }
             },
             itemStyle: {
